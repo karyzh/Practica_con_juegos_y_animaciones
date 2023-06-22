@@ -1,0 +1,33 @@
+<canvas width="600" height="400"> </canvas>
+
+<script>
+
+	var pantalla = document.querySelector("canvas");
+	var pincel = pantalla.getContext("2d"); 
+
+	pincel.fillStyle = "grey";
+	pincel.fillRect(0,0,600,400);
+
+	function exhibirAlerta(evento){ //evento para saber las coordenadas de donde se hace clic
+		var x = evento.pageX - pantalla.offsetLeft; //resta lo restante de la pantalla o pizarra lado izquierdo 
+		var y = evento.pageY - pantalla.offsetTop; // resta lo restante de la pantalla hacia arriba
+		console.log(evento);
+		alert(x + "," + y);
+	}
+
+	function dibujarCirculo(evento){ 
+		var x = evento.pageX - pantalla.offsetLeft;  
+		var y = evento.pageY - pantalla.offsetTop;
+
+		pincel.fillStyle = "blue";
+		pincel.beginPath();
+		pincel.arc(x,y,10,0,2*3.14);
+		pincel.fill();
+
+		console.log(x + "," + y);
+	}
+
+	//pantalla.onclick = exhibirAlerta;
+	pantalla.onclick = dibujarCirculo; //cada vez que haga clic, llamará a la función circulo para que dibuje el circulo en la pantalla 
+
+</script>

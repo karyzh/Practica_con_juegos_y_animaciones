@@ -1,0 +1,44 @@
+<canvas width="600" height="400"> </canvas>
+
+<script>
+
+	var pantalla = document.querySelector("canvas");
+	var pincel = pantalla.getContext("2d"); 
+
+	pincel.fillStyle = "lightgrey";
+	pincel.fillRect(0,0,600,400);
+
+
+	function disenarCircunferencia(x,y,radio){
+		pincel.fillStyle = "blue";
+		pincel.beginPath();
+		pincel.arc(x,y,radio,0,2*Math.PI);
+		pincel.fill(); //se rellena la circunferencia
+
+
+	}
+
+	function limpiarPantalla(){
+
+		pincel.clearRect(0,0,600,400);
+	}
+
+
+	//para ver en la consola lo que hace el setInterval
+	/*function exhibirMensaje(){
+
+		console.log("mostrar mensaje");
+	} 
+	setInterval(exhibirMensaje, 1000);*/
+	
+	var x = 0;
+
+	function actualizarPantalla(){
+		limpiarPantalla();
+		disenarCircunferencia(x,20,10);
+		x++;
+	}
+	
+	setInterval(actualizarPantalla,100);
+
+</script>
